@@ -36,10 +36,10 @@ jobs:
     #   env:
     #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     #   run: heroku container:release -a gogo-123 web 
-    - name : register with heroku
-      run : heroku git:remote -a gogo-123
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    # - name : register with heroku
+    #   run : heroku git:remote -a gogo-123
+    #   env:
+    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     - name: deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.12.12
       with:
