@@ -44,6 +44,10 @@ func TestCreateMatch(t *testing.T) {
 	fmt.Printf("Payload: %s", string(payload))
 
 	if _, ok := res.Header["Location"]; !ok {
+<<<<<<< HEAD
 		t.Error("Location Header not set")
+=======
+		 t.Error("Location header is not set")
+>>>>>>> a37e028ffb3fe6f64396522331f39a45f585ae5e
 	}
 }
