@@ -23,3 +23,10 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+    - name: deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "gogo-123" #Must be unique in Heroku
+        heroku_email: "devvasufree@gmail.com"
