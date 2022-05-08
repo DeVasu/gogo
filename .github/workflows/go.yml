@@ -24,9 +24,21 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - name: deploy to Heroku
-      uses: akhileshns/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "gogo-123" #Must be unique in Heroku
-        heroku_email: "devvasufree@gmail.com"
+    - name: Login to Heroku Container registry
+      env: 
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:login 
+    - name: Build and push
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:push -a gogo-123 web 
+    - name: Release
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:release -a gogo-123 web 
+    # - name: deploy to Heroku
+    #   uses: akhileshns/heroku-deploy@v3.12.12
+    #   with:
+    #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+    #     heroku_app_name: "gogo-123" #Must be unique in Heroku
+    #     heroku_email: "devvasufree@gmail.com"
