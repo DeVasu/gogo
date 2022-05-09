@@ -46,3 +46,8 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "gogo-123" #Must be unique in Heroku
         heroku_email: "devvasufree@gmail.com"
+        justlogin: true
+    - run: |
+        # git config user.name "<NAME>" && git config user.email "<EMAIL>" # You may have to do this as well
+        git remote add heroku git@heroku.com:<HEROKU_APP_NAME>.git
+        git push heroku master
