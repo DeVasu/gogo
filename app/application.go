@@ -1,6 +1,8 @@
 package app
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,7 +11,11 @@ var (
 )
 
 func StartApplication() {
+	port := os.Getenv("PORT")
+	if len(port) == 0 { 
+		port = "3000" 
+	}
 
 	mapUrls()
-	router.Run(":3030")
+	router.Run(":" + port)
 }
